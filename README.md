@@ -8,4 +8,4 @@ The program uses nonequivalence operation to implement encryption.
 option includes:  
 encode&decode  
 
-#Welcome to the full request
+# Welcome to the full request
