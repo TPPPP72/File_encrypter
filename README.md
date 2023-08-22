@@ -10,4 +10,4 @@ encode&decode
   
 You can build this project by the bat script or cmake
 
-# Welcome to the full request
+# Welcome to the pull request
