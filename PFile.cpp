@@ -4,7 +4,7 @@
 #include "PFile.h"
 
 // 复制文件
-int Pcopy(std::string input, std::string output, long long p)
+int Pcopy(const std::string &input, const std::string &output, long long p)
 {
 	std::ifstream r(input, std::ios::binary);
 	if (!r.is_open())
@@ -23,7 +23,7 @@ int Pcopy(std::string input, std::string output, long long p)
 }
 
 // 删除文件
-int Premove(std::string p)
+int Premove(const std::string &p)
 {
 	std::filesystem::path rem = p;
 	if (std::filesystem::exists(rem))
@@ -35,7 +35,7 @@ int Premove(std::string p)
 }
 
 // 获取文件的完整路径
-std::string Pgetfullpath(std::string argv, std::string path)
+std::string Pgetfullpath(const std::string &argv, std::string path)
 {
 	// 移除首尾空格
 	while (path.front() == ' ')
@@ -66,12 +66,12 @@ std::string Pgetfullpath(std::string argv, std::string path)
 }
 
 //获取文件所在路径 v1 请保证传入的路径是完整的 否则程序会崩溃！
-std::string Pgetinpath(std::string path){
+std::string Pgetinpath(const std::string &path){
 	return path.substr(0, path.rfind("\\") + 1);
 }
 
 // 获取文件所在路径 v2
-std::string Pgetinpath(std::string argv, std::string path)
+std::string Pgetinpath(const std::string &argv, const std::string &path)
 {
 	std::string temp = Pgetfullpath(argv, path);
 	return temp.substr(0, temp.rfind("\\") + 1);
