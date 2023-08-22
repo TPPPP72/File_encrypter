@@ -22,18 +22,6 @@ bool Pcopy(const std::string &input, const std::string &output, long long p)
 	return true;
 }
 
-// 删除文件
-bool Premove(const std::string &p)
-{
-	std::filesystem::path rem = p;
-	if (std::filesystem::exists(rem))
-	{
-		std::filesystem::remove_all(rem);
-		return true;
-	}
-	return false;
-}
-
 // 获取文件的完整路径
 std::string Pgetfullpath(const std::string &argv, std::string path)
 {
@@ -61,12 +49,12 @@ std::string Pgetfullpath(const std::string &argv, std::string path)
 	// 判断是否是直接传入文件
 	if (path.find('\\') == std::string::npos)
 		return temp + path; // 拼接原串
-	else
-		return path;
+	return path;
 }
 
-//获取文件所在路径 v1 请保证传入的路径是完整的 否则程序会崩溃！
-std::string Pgetinpath(const std::string &path){
+// 获取文件所在路径 v1 请保证传入的路径是完整的 否则程序会崩溃！
+std::string Pgetinpath(const std::string &path)
+{
 	return path.substr(0, path.rfind('\\') + 1);
 }
 
