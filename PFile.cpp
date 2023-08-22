@@ -45,7 +45,7 @@ std::string Pgetfullpath(const std::string &argv, std::string path)
 
 	// 缓存运行路径
 	std::string temp = argv;
-	temp = temp.substr(0, temp.rfind("\\") + 1);
+	temp = temp.substr(0, temp.rfind('\\') + 1);
 
 	// 判断.的存在
 	if (path.front() == '.')
@@ -59,7 +59,7 @@ std::string Pgetfullpath(const std::string &argv, std::string path)
 	}
 
 	// 判断是否是直接传入文件
-	if (path.find("\\") == std::string::npos)
+	if (path.find('\\') == std::string::npos)
 		return temp + path; // 拼接原串
 	else
 		return path;
@@ -67,12 +67,12 @@ std::string Pgetfullpath(const std::string &argv, std::string path)
 
 //获取文件所在路径 v1 请保证传入的路径是完整的 否则程序会崩溃！
 std::string Pgetinpath(const std::string &path){
-	return path.substr(0, path.rfind("\\") + 1);
+	return path.substr(0, path.rfind('\\') + 1);
 }
 
 // 获取文件所在路径 v2
 std::string Pgetinpath(const std::string &argv, const std::string &path)
 {
 	std::string temp = Pgetfullpath(argv, path);
-	return temp.substr(0, temp.rfind("\\") + 1);
+	return temp.substr(0, temp.rfind('\\') + 1);
 }

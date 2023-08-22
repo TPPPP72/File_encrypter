@@ -40,7 +40,7 @@ int main(int argc, char **argv)
     }
 
     // 确定输出文件完整路径
-    std::string filename = input.substr(input.rfind("\\") + 1);
+    std::string filename = input.substr(input.rfind('\\') + 1);
     if (per[1] == "encode")
     {
         filename = base64::to_base64(filename);
