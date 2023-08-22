@@ -4,7 +4,7 @@
 
 constexpr int size = 4;
 
-long long getkey(std::string s);
+long long getkey(const std::string &s);
 
 int main(int argc, char **argv)
 {
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
     }
 
     // 确定输出文件完整路径
-    std::string filename = input.substr(input.rfind("\\") + 1);
+    std::string filename = input.substr(input.rfind('\\') + 1);
     if (per[1] == "encode")
     {
         filename = base64::to_base64(filename);
@@ -72,7 +72,7 @@ int main(int argc, char **argv)
     return 0;
 }
 
-long long getkey(std::string s)
+long long getkey(const std::string &s)
 {
     constexpr int mod1 = 1919810, mod2 = 998244353;
     long long key = 0, base = 1;

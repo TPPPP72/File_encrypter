@@ -1,13 +1,11 @@
 # File_encrypter
 
-This is a simple encrypter,you can use it to encode file with any extension.  
+This is a simple file encrypter, you can use it to encode files of any type.  
 The program uses nonequivalence operation to implement encryption.  
 
-#### Usage : [option] [file] [password]  
+## Usage 
+`encrypt [encode|decode] [<file>] [<password>]`
 
-option includes:  
-encode&decode  
-  
-You can build this project by the bat script or cmake
+You can build this project using `build.bat` or cmake.
 
-# Welcome to the pull request
+Pull requests welcome.

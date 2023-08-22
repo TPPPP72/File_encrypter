@@ -14,7 +14,7 @@ inline std::string get_base64_chars() {
     return base64_chars;
 }
 
-inline std::string to_base64(std::string const &data) {
+inline std::string to_base64(const std::string &data) {
   int counter = 0;
   uint32_t bit_stream = 0;
   const std::string base64_chars = get_base64_chars();
@@ -48,7 +48,7 @@ inline std::string to_base64(std::string const &data) {
   return encoded;
 }
 
-inline std::string from_base64(std::string const &data) {
+inline std::string from_base64(const std::string &data) {
   int counter = 0;
   uint32_t bit_stream = 0;
   std::string decoded;
