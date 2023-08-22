@@ -1,3 +1,4 @@
+#include <io.h>
 #include <vector>
 #include "PFile.h"
 #include "base64.hpp"
@@ -33,7 +34,7 @@ int main(int argc, char **argv)
     output = Pgetinpath(input);
 
     // 检查文件是否存在
-    if (!std::filesystem::exists(std::filesystem::path(input)))
+    if (_access(input.c_str(), 00) == -1)
     {
         std::cout << "No this file!";
         return 3;
@@ -60,7 +61,7 @@ int main(int argc, char **argv)
     long long key = getkey(per[3]);
 
     // 加密
-    std::cout << "Running......" << std::endl;
+    std::cout << "Running......" << '\n';
     Pcopy(input, output, key);
     if (per[1] == "encode")
         std::cout << "Encoded";
@@ -76,7 +77,7 @@ long long getkey(const std::string &s)
 {
     constexpr int mod1 = 1919810, mod2 = 998244353;
     long long key = 0, base = 1;
-    for (int i : s)
+    for (auto i : s)
         key += i * base, base *= 10, base %= mod1, key %= mod2;
     return key;
 }
