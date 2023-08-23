@@ -4,7 +4,7 @@ This is a simple file encrypter, you can use it to encode files of any type.
 The program uses nonequivalence operation to implement encryption.  
 
 ## Usage 
-`encrypt [encode|decode] [<file>] [<password>]`
+`encrypt (encode|decode) <file> <password> [output]`
 
 You can build this project using `build.bat` or cmake.
 
