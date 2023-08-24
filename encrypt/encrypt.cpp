@@ -1,5 +1,6 @@
 #include <vector>
 #include "includes\PFile.h"
+#include "includes\PIO.hpp"
 #include "quote\base64.hpp"
 
 constexpr int minp = 4, maxp = 6;
@@ -10,7 +11,7 @@ int main(int argc, char **argv)
     // 参数数量校验
     if (argc < minp || argc > maxp)
     {
-        std::cout << "Usage:encrypt (encode|decode) <file> <password> [<output>]";
+        Pprint("Usage:encrypt (encode|decode) <file> <password> [<output>]");
         return 1;
     }
 
@@ -22,7 +23,7 @@ int main(int argc, char **argv)
     // 检查选项参数
     if (per[1] != "encode" && per[1] != "decode")
     {
-        std::cout << "Undefined option!";
+        Pprint("Undefined option!", P_RED);
         return 2;
     }
 
@@ -33,7 +34,7 @@ int main(int argc, char **argv)
         output = Pgetinpath(input);
     else if (argc == maxp)
     {
-        if (per[4] == "null" && per[5] == "official-hack")  //for ui to hack
+        if (per[4] == "null" && per[5] == "official-hack") // for ui to hack
             output = Pgetinpath(input);
         else
             output = Pgetfullpath(per[0], per[4]);
@@ -44,7 +45,7 @@ int main(int argc, char **argv)
     // 检查文件是否存在
     if (Pcheck(input) != 1)
     {
-        std::cout << "No this file!";
+        Pprint("No this file!", P_RED);
         return 3;
     }
 
@@ -75,29 +76,29 @@ int main(int argc, char **argv)
 
     //// 加密
 
-    //for ui to hack
+    // for ui to hack
     if (per[5] != "official-hack")
-        std::cout << "Running......" << '\n';
+        Pprint("Running......\n");
 
     if (!Pcopy(input, output, key))
     {
-        std::cout << output;
+        Pprint("Unknown Error", P_RED);
         return 4;
     }
 
-    //for ui to hack
+    // for ui to hack
     if (per[5] == "official-hack")
     {
-        std::cout << output;
+        Pprint(output);
         return 404;
     }
 
     if (per[1] == "encode")
-        std::cout << "Encoded";
+        Pprint("Encoded");
     else
-        std::cout << "Decoded";
-    std::cout << " File is declared to:" << output;
-
+        Pprint("Decoded");
+    Pprint(" File is declared to: ");
+    Pprint(output, P_BLUE);
     // 退出程序
     return 0;
 }
