@@ -1,6 +1,6 @@
 @echo off
 mkdir build>nul 2>nul
-g++ -Wall -static .\encrypt.cpp .\includes\PFile.cpp .\quote\base64.hpp -o .\build\encrypt.exe
+g++ -Wall -static .\includes\PFile.cpp .\includes\PIO.hpp .\quote\base64.hpp .\encrypt.cpp -o .\build\encrypt.exe
 strip .\build\encrypt.exe
 echo.finished!
 pause>nul
