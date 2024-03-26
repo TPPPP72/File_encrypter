@@ -45,10 +45,6 @@ std::string Pgetfullpath(const std::string &argv, std::string path)
 	while (path.back() == ' ')
 		path.erase(path.end() - 1);
 
-	// 缓存运行路径
-	std::string temp = argv;
-	temp = temp.substr(0, temp.rfind('\\') + 1);
-
 	// 判断.的存在
 	if (path.front() == '.')
 		path.erase(path.begin());
@@ -57,12 +53,13 @@ std::string Pgetfullpath(const std::string &argv, std::string path)
 	if (path.front() == '\\')
 	{
 		path.erase(path.begin());
-		return temp + path; // 拼接原串
+		return argv + '\\' + path;
 	}
 
 	// 判断是否是直接传入文件
 	if (path.find('\\') == std::string::npos)
-		return temp + path; // 拼接原串
+		return argv + '\\' + path;
+		
 	return path;
 }
 
