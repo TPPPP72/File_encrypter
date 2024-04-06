@@ -31,7 +31,6 @@ int main(int argc, char **argv)
     // 初始化输入输出路径
     std::string input, output;
     input = Pgetfullpath(per[0], per[2]);
-    std::cout<<input;
     if (argc == minp)
         output = Pgetinpath(input);
     else if (argc == maxp)
